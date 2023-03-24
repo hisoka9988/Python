@@ -1,0 +1,49 @@
+import random
+
+def play_game():
+    print("Welcome to the Guess the Number game!\n")
+    num_guesses = 0
+    target_num = random.randint(1, 100)
+    while True:
+        user_guess = input("I am thinking of a number between 1 and 100. Guess the number: ")
+        num_guesses += 1
+        try:
+            user_guess = int(user_guess)
+        except ValueError:
+            print("Invalid input. Please enter a number between 1 and 100.")
+            continue
+        if user_guess < 1 or user_guess > 100:
+            print("Invalid input. Please enter a number between 1 and 100.")
+        elif user_guess < target_num:
+            print("Too low, try again.")
+        elif user_guess > target_num:
+            print("Too high, try again.")
+        else:
+            print(f"Congratulations, you guessed the number in {num_guesses} tries!\n")
+            break
+    return num_guesses
+
+def play_again():
+    while True:
+        user_choice = input("Do you want to play again? (yes or no) ")
+        if user_choice.lower() == "yes":
+            return True
+        elif user_choice.lower() == "no":
+            return False
+        else:
+            print("Invalid input. Please enter 'yes' or 'no'.")
+
+def main():
+    num_games = 0
+    total_guesses = 0
+    while True:
+        num_games += 1
+        num_guesses = play_game()
+        total_guesses += num_guesses
+        if not play_again():
+            break
+    print(f"You played {num_games} games and made {total_guesses} total guesses.")
+    print("Goodbye!")
+
+if __name__ == "__main__":
+    main()
