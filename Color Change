@@ -1,0 +1,25 @@
+import turtle
+
+# Set up the turtle screen
+screen = turtle.Screen()
+screen.bgcolor("black")
+screen.title("Blinking Circles")
+
+# Set up the turtle
+t = turtle.Turtle()
+t.hideturtle()
+t.speed(0)
+
+# Define the circle function
+def draw_circle(color, radius):
+    t.color(color)
+    t.begin_fill()
+    t.circle(radius)
+    t.end_fill()
+
+# Draw the circles
+while True:
+    draw_circle("red", 100)
+    draw_circle("white", 80)
+    draw_circle("blue", 60)
+    draw_circle("black", 40)
